@@ -76,6 +76,11 @@ module.exports = class Passport extends Model {
         }
       }
     }
+    else if (app && app.config.database.orm === 'mongoose') {
+      config = {
+
+      }
+    }
     return config
   }
 
@@ -150,7 +155,25 @@ module.exports = class Passport extends Model {
         provider: {type: Sequelize.STRING, allowNull: true},
         identifier: {type: Sequelize.STRING, allowNull: true},
         tokens: {type: Sequelize.STRING, allowNull: true}
-
+      }
+    }
+    else if (app.config.database.orm === 'mongoose') {
+      schema = {
+        protocol: {
+          type: String
+        },
+        password: {
+          type: String
+        },
+        provider: {
+          type: String
+        },
+        identifier: {
+          type: String
+        },
+        tokens: {
+          type: String
+        }
       }
     }
     return schema
