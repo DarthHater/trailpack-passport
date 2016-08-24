@@ -30,7 +30,6 @@ module.exports = class Passport extends Model {
 
   static config(app) {
     let config = {}
-
     if (app && app.config.database.orm === 'waterline') {
       config = {
         /**
@@ -86,7 +85,7 @@ module.exports = class Passport extends Model {
 
   static schema(app, Sequelize) {
     let schema = {}
-    if (app.config.database.orm === 'waterline') {
+    if (app && app.config.database.orm === 'waterline') {
       schema = {
         // Required field: Protocol
         //
@@ -137,7 +136,7 @@ module.exports = class Passport extends Model {
         }
       }
     }
-    else if (app.config.database.orm === 'sequelize') {
+    else if (app && app.config.database.orm === 'sequelize') {
       schema = {
         protocol: {
           type: Sequelize.STRING,
@@ -157,7 +156,7 @@ module.exports = class Passport extends Model {
         tokens: {type: Sequelize.STRING, allowNull: true}
       }
     }
-    else if (app.config.database.orm === 'mongoose') {
+    else if (app && app.config.database.orm === 'mongoose') {
       schema = {
         protocol: {
           type: String
