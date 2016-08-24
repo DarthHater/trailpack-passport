@@ -67,6 +67,18 @@ module.exports = class User extends Model {
         }
       }
     }
+    else if (app.config.database.org === 'mongoose') {
+      schema = {
+        username: {
+          type: String,
+          unique: true
+        },
+        email: {
+          type: String,
+          unique: true
+        }
+      }
+    }
     return schema
   }
 }
