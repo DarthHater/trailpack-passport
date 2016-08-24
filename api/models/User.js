@@ -67,7 +67,7 @@ module.exports = class User extends Model {
         }
       }
     }
-    else if (app.config.database.org === 'mongoose') {
+    else if (app.config.database.orm === 'mongoose') {
       schema = {
         username: {
           type: String,
